@@ -13,7 +13,7 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
     <nav class="navbar bg-light">
         <div class="container-fluid">
@@ -26,27 +26,27 @@
         <div class="card quiz-card">
             <img src="img/quiz-banner.jpg" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title">Frage</h5>
+                <h5 class="card-title" id="questiontext">Frage</h5>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2 p-2" id="answer1">
                     <div class="card-body">
                         Antwort
                     </div>
                 </div>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2 p-2" id="answer2">
                     <div class="card-body">
                         Antwort
                     </div>
                 </div>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2 p-2" id="answer3">
                     <div class="card-body">
                         Antwort
                     </div>
                 </div>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2 p-2" id="answer4">
                     <div class="card-body">
                         Antwort
                     </div>
@@ -54,7 +54,7 @@
 
                 <div class="question-footer">
                     <span>
-                        <b>1</b> von <b>5</b> Fragen
+                        <b>1</b> von <b id="amountQuestions">5</b> Fragen
                     </span>
 
                     <button class="btn btn-primary">Nächste Frage</button>
