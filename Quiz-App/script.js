@@ -29,7 +29,7 @@ let questions = [
         "answer2": "Severus Snape",
         "answer3": "Harry 'the Killer' Potter",
         "answer4": "Bruce Wayne",
-        "right_answer": 3
+        "right_answer": 2
     },
     {
         "question": "Wie viel Promille hat man nach etwa drei Bier?",
@@ -61,6 +61,7 @@ let questions = [
 let currentQuestion = 0;
 
 
+
 function init() {
     document.getElementById('amountQuestions').innerHTML = questions.length;
 
@@ -71,6 +72,7 @@ function init() {
 function showQuestion() {
     let question = questions[currentQuestion];
 
+    document.getElementById('immediateQuestion').innerHTML = currentQuestion + 1;
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer1').innerHTML = question['answer1'];
     document.getElementById('answer2').innerHTML = question['answer2'];
@@ -83,13 +85,12 @@ function showQuestion() {
 
 function answer(selection) {
     let question = questions[currentQuestion];
-    console.log('Selected Answer is', selection);
     let selectedQuestionNumber = selection.slice(-1);
-    console.log('Number is ', selectedQuestionNumber);
-
     let idOfRightAnswer = `answer${question['right_answer']}`;
 
-    if(selectedQuestionNumber == question['right_answer']){
+
+
+    if (selectedQuestionNumber == question['right_answer']) {
         console.log('isso');
         document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
@@ -97,4 +98,24 @@ function answer(selection) {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
+    document.getElementById('next-button').disabled = false;
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    document.getElementById('next-button').disabled = true;
+    resetAnswerButtons();
+    showQuestion();
+
+}
+
+function resetAnswerButtons() {
+    document.getElementById('answer1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer4').parentNode.classList.remove('bg-success');
 }
