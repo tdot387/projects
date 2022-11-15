@@ -28,26 +28,26 @@
             <div class="card-body">
                 <h5 class="card-title" id="questiontext">Frage</h5>
 
-                <div class="card quiz-answer-card mb-2 p-2" id="answer1">
-                    <div class="card-body">
+                <div class="card quiz-answer-card mb-2 p-2" onclick="answer('answer1')" >
+                    <div class="card-body" id="answer1">
                         Antwort
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2 p-2" id="answer2">
-                    <div class="card-body">
+                <div class="card quiz-answer-card mb-2 p-2" onclick="answer('answer2')">
+                    <div class="card-body" id="answer2">
                         Antwort
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2 p-2" id="answer3">
-                    <div class="card-body">
+                <div class="card quiz-answer-card mb-2 p-2" onclick="answer('answer3')">
+                    <div class="card-body" id="answer3">
                         Antwort
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2 p-2" id="answer4">
-                    <div class="card-body">
+                <div class="card quiz-answer-card mb-2 p-2" onclick="answer('answer4')">
+                    <div class="card-body" id="answer4">
                         Antwort
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         <b>1</b> von <b id="amountQuestions">5</b> Fragen
                     </span>
 
-                    <button class="btn btn-primary">Nächste Frage</button>
+                    <button class="btn btn-primary" id="next-button">Nächste Frage</button>
                 </div>
 
 
