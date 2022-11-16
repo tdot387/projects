@@ -58,6 +58,8 @@ let questions = [
 
 ];
 
+let rightQuestions = 0;
+
 let currentQuestion = 0;
 
 
@@ -70,6 +72,16 @@ function init() {
 
 
 function showQuestion() {
+
+    if(currentQuestion >= questions.length) {
+        document.getElementById('endScreen').style = '';
+        document.getElementById('questionbody').style = 'display: none';
+
+        document.getElementById('allTheQuestions').innerHTML = questions.length;
+        document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
+
+        document.getElementById('header-image').src= 'img/medals.jpg';
+    } else {
     let question = questions[currentQuestion];
 
     document.getElementById('immediateQuestion').innerHTML = currentQuestion + 1;
@@ -79,7 +91,7 @@ function showQuestion() {
     document.getElementById('answer3').innerHTML = question['answer3'];
     document.getElementById('answer4').innerHTML = question['answer4'];
 
-
+}
 }
 
 
@@ -91,10 +103,9 @@ function answer(selection) {
 
 
     if (selectedQuestionNumber == question['right_answer']) {
-        console.log('isso');
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestions++;
     } else {
-        console.log('nä');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
