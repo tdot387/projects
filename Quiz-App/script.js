@@ -59,7 +59,6 @@ let questions = [
 ];
 
 let rightQuestions = 0;
-
 let currentQuestion = 0;
 
 
@@ -82,7 +81,14 @@ function showQuestion() {
 
         document.getElementById('header-image').src= 'img/medals.jpg';
     } else {
-    let question = questions[currentQuestion];
+    
+        let percent = (currentQuestion +1) / questions.length;
+        percent = Math.round(percent*100);
+        document.getElementById('progress-bar').innerHTML = `${percent} %`;
+        document.getElementById('progress-bar').style.width = `${percent}%`;
+        console.log(percent);
+    
+        let question = questions[currentQuestion];
 
     document.getElementById('immediateQuestion').innerHTML = currentQuestion + 1;
     document.getElementById('questiontext').innerHTML = question['question'];
@@ -129,4 +135,14 @@ function resetAnswerButtons() {
     document.getElementById('answer3').parentNode.classList.remove('bg-success');
     document.getElementById('answer4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer4').parentNode.classList.remove('bg-success');
+}
+
+function restartGame() {
+    document.getElementById('header-image').src= 'img/quiz-banner.jpg';
+    rightQuestions = 0;
+    currentQuestion = 0;
+    document.getElementById('endScreen').style = 'display: none';
+        document.getElementById('questionbody').style = '';
+    init();
+    
 }
