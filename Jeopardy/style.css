@@ -1,0 +1,40 @@
+body {
+    top: 0;
+    left: 0;
+
+}
+
+.headline {
+    display: flex;
+    justify-content: center;
+}
+
+.boxes {
+    
+    color: white;
+    border: 1px solid black;
+    height: 120px;
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 12px;
+
+}
+
+.numbers {
+    display: flex;
+    justify-content: center;
+
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    background-color: azure;
+}
