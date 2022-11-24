@@ -13,11 +13,21 @@
 </head>
 
 <body onload="getPokemon()">
+    <div class="showFullscreen d-none" id="fullscreen">
+        <img id="close-btn" src="img/close-btn.png" onclick="closePokemon()">
+        <img id="left" src="img/left.png" onclick="previousPokemon()">
+        <img id="right" src="img/right.png" onclick="nextPokemon()">
+        <div class="pokeCenter" id="pokeCenter">
+            
+        </div>
+    </div>
+
 
     <div class="pokedex" id="pokedex">
-        
+
 
     </div>
+
 
 </body>
 

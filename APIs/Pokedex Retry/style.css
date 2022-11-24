@@ -1,18 +1,48 @@
 body {
+
+    font-family: 'Roboto';    
+    
+}
+
+.showFullscreen {
     top: 0;
     left: 0;
-    font-family: 'Roboto';    
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 999;
+    background-color: black;
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.currentPokemon {
+    color: white;
 }
 
 h2 {
     margin-top: -10px;
 }
 
+h3 {
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 2px 6px 2px 6px;
+    border-radius: 5px;
+}
+
 img {
     margin-top: -20px;
 }
 
+.d-none {
+    display: none;
+}
+
+.overflow {
+    overflow: hidden;
+}
 
 
 .pokedex {
@@ -24,7 +54,7 @@ img {
 .pokeCard {
     width: 250px;
     height: 250px;
-    background-color: #FC6C6F;
+    
     color: white;
     margin-top: 24px;
     margin-left: 24px;
@@ -51,5 +81,102 @@ img {
     width: 50%;
 }
 
+.grass {
+    background-color: #8EEA8E;
+}
 
+.fire {
+    background-color: #FC6C6F;
+}
+
+.bug {
+    background-color: #DDB36A;
+}
+
+.water {
+    background-color: #97BBD8;
+}
+
+.normal {
+    background-color: #92C8BF;
+}
+
+.poison {
+    background-color: #DEF472;
+    color: black;
+}
+
+.electric {
+    background-color: #C4DF83;
+}
+
+.ground {
+    background-color: #E4CC76;
+}
+
+.info-one {
+    min-height: 50vh;
+    background-color: #FC6C6F;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    align-items: center;
+}
+
+#close-btn {
+    cursor: pointer;
+    position: fixed;
+    top: 36px;
+    left: 12px;
+}
+
+#left {
+    position: fixed;
+    left: 24px;
+    cursor: pointer;
+}
+
+#right {
+    position: fixed;
+    right: 24px;
+    cursor: pointer;
+}
+
+
+
+
+.capital-letter {
+    text-transform: capitalize;
+}
+
+.pokeCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topInfo {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #FC6C6F;
+    color: white;
+    padding: 24px;
+}
+
+.imageContainer {
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: -20px;
+}
+
+.imageContainer img {
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+}
 
