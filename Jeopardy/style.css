@@ -1,7 +1,10 @@
 body {
     top: 0;
     left: 0;
-
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .headline {
@@ -9,12 +12,17 @@ body {
     justify-content: center;
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .boxes {
     
-    color: white;
+    
     border: 1px solid black;
-    height: 120px;
-    width: 220px;
+    height: 110px;
+    width: 320px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,19 +30,4 @@ body {
     font-weight: bold;
     margin: 12px;
 
-}
-
-.numbers {
-    display: flex;
-    justify-content: center;
-
-}
-
-.test {
-    display: flex;
-    flex-direction: column;
-}
-
-.category {
-    background-color: azure;
 }

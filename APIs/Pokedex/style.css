@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: 'Roboto';
+    background-image: url('img/pokemon-bg.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+
+
+#pokeCard {
+    width: 300px;
+    margin-top: 24px;
+    margin-left: 24px;
+}
+
+#pokedex{
+    min-height: 25vh;
+    background-color: #FC6C6F;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    align-items: center;
+}
+
+.infoContainer {
+    background-color: white;
+    border-radius: 40px;
+    height: 70px;
+    margin-top: -40px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    border-left: 3px solid #FC6C6F;
+    border-right: 3px solid #FC6C6F;
+    border-bottom: 3px solid #FC6C6F;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+#pokemonImg {
+    margin-top: -50px;
+    height: 175px;
+    width: 175px;
+    margin-top: -132px;
+    padding-bottom: 16px;
+    
+}
+
+.statsTable {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
