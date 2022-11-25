@@ -1,5 +1,5 @@
 body {
-
+    background-color: rgba(0,0,0,0.5);
     font-family: 'Roboto';    
     
 }
@@ -20,6 +20,10 @@ body {
 
 .currentPokemon {
     color: white;
+}
+
+h1 {
+    margin-top: -3px;
 }
 
 h2 {
@@ -103,7 +107,12 @@ img {
 
 .poison {
     background-color: #DEF472;
-    color: black;
+    color: rgba(0,0,0,0.8);
+    
+}
+
+.poison h3 {
+    border: 1px solid rgba(0,0,0,0.8);
 }
 
 .electric {
@@ -114,17 +123,14 @@ img {
     background-color: #E4CC76;
 }
 
-.info-one {
-    min-height: 50vh;
-    background-color: #FC6C6F;
-    color: white;
+.outerCard {
+    border: 10px solid gray;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 24px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
     align-items: center;
 }
+
 
 #close-btn {
     cursor: pointer;
@@ -158,13 +164,21 @@ img {
     align-items: center;
 }
 
+.cardFullscreen {
+    max-height: 70vh;
+    width: 400px;
+}
+
 .topInfo {
-    min-height: 50vh;
+    
     display: flex;
     flex-direction: column;
-    background-color: #FC6C6F;
+    align-items: center;
     color: white;
     padding: 24px;
+    border-radius: 10px;
+    height: 135px;
+    width: 333px;
 }
 
 .imageContainer {
@@ -172,11 +186,29 @@ img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-top: -20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    width: 381px;
 }
 
 .imageContainer img {
-    width: 350px;
-    height: 350px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
+    margin-top: -50px;
+
+}
+
+
+
+.statsTable {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    text-align: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    
 }
 

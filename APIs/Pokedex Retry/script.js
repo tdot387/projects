@@ -4,18 +4,19 @@ let allPokemon = [0];
 
 async function getPokemon() {
     for (let i = 1; i < 31; i++) {
-
+        includeHTML();
         let url = source + i;
         let response = await fetch(url);
         let responseAsJson = await response.json();
         console.log('Hier: ', responseAsJson);
         showPokemon(responseAsJson, i);
         checkBgColor(responseAsJson, i);
-        allPokemon.push(responseAsJson['sprites']['other']['dream_world']['front_default']);
+        allPokemon.push(responseAsJson['name']);
     }
 }
 
 function showPokemon(responseAsJson, i) {
+
     document.getElementById('pokedex').innerHTML += `
     <div class="pokeCard" id="pokeCard${i}" onclick="openPokemon(${i})">
     <div class="pokemonInfo">
@@ -25,40 +26,77 @@ function showPokemon(responseAsJson, i) {
         <h3 id="type${i}">${responseAsJson['types'][0]['type']['name']}</h3>
     </div>
     </div>`;
-    
+
 
 }
 
-function openPokemon(i) {
+async function openPokemon(i) {
+    let url = source + i;
+    let response = await fetch(url);
+    let displayPokemon = await response.json();
+
     document.getElementById('fullscreen').classList.remove('d-none');
     document.body.classList.add('overflow');
     currentPokemon = i;
-    let showHighRes = allPokemon[i];
-    document.getElementById('pokeCenter').innerHTML = `
+    
+
+
+    document.getElementById('pokeCenter').innerHTML = /*html*/ `
     <div class="cardFullscreen">
-        <div class="topInfo">
-        <h1>Name</h1>
+        <div id="outerCard" class="outerCard">
+        <div id="topInfo${i}" class="topInfo">
+        <div># ${displayPokemon['id']}</div>
+        <h1 class="capital-letter" id="name${i}">${displayPokemon['name']}</h1>
         </div>
         <div class="imageContainer">
-        <img src="${showHighRes}">
+        <img id="images${i}" src="${displayPokemon['sprites']['other']['dream_world']['front_default']}">
+        
+        <div class="statsTable">
+            <div>HP </div>
+            <div>${displayPokemon['stats'][0]['base_stat']}</div>
         </div>
-    </div> `;
+        <div class="statsTable">
+            <div>Attack</div> 
+            <div>${displayPokemon['stats'][1]['base_stat']}</div>
+        </div>
+        <div class="statsTable">
+            <div>Defense</div>
+            <div>${displayPokemon['stats'][2]['base_stat']}</div>
+        </div>
+        <div class="statsTable">
+            <div>Special Attack</div>
+            <div>${displayPokemon['stats'][3]['base_stat']}</div>
+        </div>
+        <div class="statsTable">
+            <div>Special Defense</div>
+            <div>${displayPokemon['stats'][4]['base_stat']}</div>
+        </div>
+        <div style="margin-bottom: 24px" class="statsTable">
+            <div>Speed</div>
+            <div>${displayPokemon['stats'][5]['base_stat']}</div>
+        </div>  
+    </div>
+
+`;
+checkBgColorFs(displayPokemon, i);
+
     return currentPokemon;
+
 
 }
 
 function previousPokemon() {
-    if(currentPokemon > 1){
-        let before = currentPokemon -1;
+    if (currentPokemon > 1) {
+        let before = currentPokemon - 1;
         openPokemon(before);
     } else {
-        openPokemon(allPokemon.length -1)
+        openPokemon(allPokemon.length - 1)
     }
 }
 
 function nextPokemon() {
-    if(currentPokemon < allPokemon.length -1){
-        let after = currentPokemon +1;
+    if (currentPokemon < allPokemon.length - 1) {
+        let after = currentPokemon + 1;
         openPokemon(after);
     } else {
         currentPokemon = 1;
@@ -106,4 +144,68 @@ function checkBgColor(responseAsJson, i) {
     if (typeBackground == 'ground') {
         document.getElementById(`pokeCard${i}`).classList.add('ground');
     }
+}
+
+function checkBgColorFs(displayPokemon, i) {
+    let cardBackground = displayPokemon['types'][0]['type']['name'];
+    if (cardBackground == 'grass') {
+        document.getElementById(`topInfo${i}`).classList.add('grass');
+    }
+
+    if (cardBackground == 'fire') {
+        document.getElementById(`topInfo${i}`).classList.add('fire');
+    }
+
+    if (cardBackground == 'bug') {
+        document.getElementById(`topInfo${i}`).classList.add('bug');
+    }
+
+    if (cardBackground == 'water') {
+        document.getElementById(`topInfo${i}`).classList.add('water');
+    }
+
+    if (cardBackground == 'normal') {
+        document.getElementById(`topInfo${i}`).classList.add('normal');
+    }
+
+    if (cardBackground == 'poison') {
+        document.getElementById(`topInfo${i}`).classList.add('poison');
+    }
+
+    if (cardBackground == 'electric') {
+        document.getElementById(`topInfo${i}`).classList.add('electric');
+    }
+
+    if (cardBackground == 'ground') {
+        document.getElementById(`topInfo${i}`).classList.add('ground');
+    }
+}
+
+
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
 }
