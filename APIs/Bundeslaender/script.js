@@ -50,7 +50,7 @@ function renderLetters(){
 
     for(i = 0; i < letters.length; i++){
         let letter = letters[i];
-        firstLetters.innerHTML += `<div onclick="setFilter('${letter}')" class="letters">${letter}</div>
+        firstLetters.innerHTML += `<div onclick="setFilter('${letter}')" id="letters">${letter}</div>
     `
     }
 

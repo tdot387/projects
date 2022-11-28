@@ -10,7 +10,7 @@ body {
     
 }
 
-.test {
+.recWidth {
     max-width: 1024px;
 }
 
@@ -20,6 +20,7 @@ h1 {
     color: #666666;
     left: 0;
     right: 0;
+    width: 1024px;
 }
 
 h2 {
@@ -66,10 +67,12 @@ p {
     margin-top: 12px;
     margin-left: 12px;
     display: flex;
+    flex-wrap: wrap;
+    
 
 }
 
-.letters {
+#letters {
     width: 30px;
     height: 25px;
     background-color: #EEEEEE;
@@ -78,7 +81,10 @@ p {
     align-items: center;
     margin-right: 5px;
     cursor: pointer;
+    
 }
+
+
 
 @media (max-width: 800px) {
     a {
@@ -91,3 +97,4 @@ p {
         width: 100%;
     }
 }
+
