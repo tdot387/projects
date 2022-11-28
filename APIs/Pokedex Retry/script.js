@@ -11,7 +11,7 @@ async function getPokemon() {
         console.log('Hier: ', responseAsJson);
         showPokemon(responseAsJson, i);
         checkBgColor(responseAsJson, i);
-        allPokemon.push(responseAsJson['name']);
+        allPokemon.push(responseAsJson);
     }
 }
 
@@ -38,7 +38,7 @@ async function openPokemon(i) {
     document.getElementById('fullscreen').classList.remove('d-none');
     document.body.classList.add('overflow');
     currentPokemon = i;
-    
+
 
 
     document.getElementById('pokeCenter').innerHTML = /*html*/ `
@@ -78,7 +78,7 @@ async function openPokemon(i) {
     </div>
 
 `;
-checkBgColorFs(displayPokemon, i);
+    checkBgColorFs(displayPokemon, i);
 
     return currentPokemon;
 
@@ -181,31 +181,79 @@ function checkBgColorFs(displayPokemon, i) {
     }
 }
 
-
-function includeHTML() {
-  var z, i, elmnt, file, xhttp;
-  /* Loop through a collection of all HTML elements: */
-  z = document.getElementsByTagName("*");
-  for (i = 0; i < z.length; i++) {
-    elmnt = z[i];
-    /*search for elements with a certain atrribute:*/
-    file = elmnt.getAttribute("w3-include-html");
-    if (file) {
-      /* Make an HTTP request using the attribute value as the file name: */
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-          /* Remove the attribute, and call this function once more: */
-          elmnt.removeAttribute("w3-include-html");
-          includeHTML();
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html");
+        let response = await fetch(file);
+        if (response.ok) {
+            element.innerHTML = await response.text();
+        } else {
+            element.innerHTML = 'Page not found.';
         }
-      }
-      xhttp.open("GET", file, true);
-      xhttp.send();
-      /* Exit the function: */
-      return;
     }
-  }
+}
+
+
+function searchPokemon() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+    
+    document.getElementById('pokedex').innerHTML = '';
+    
+
+    for (let i = 1; i < allPokemon.length; i++) {
+        let searchResult = allPokemon[i]['name'];
+        
+        if (searchResult.toLowerCase().includes(search)){
+            let result = allPokemon[i];
+            pokedex.innerHTML += `
+            <div class="pokeCard" id="pokeCard${i}" onclick="openPokemon(${i})">
+            <div class="pokemonInfo">
+                <p># ${result['id']}</p>
+                <h2 class="capital-letter" id="names">${result['name']}</div>
+                <img id="pokemonImg" src="${result['sprites']['front_shiny']}">
+                <h3 id="type${i}">${result['types'][0]['type']['name']}</h3>
+            </div>
+            </div>`
+            checkBgColorSearch(result, i)
+        }
+       
+    }
+}
+
+function checkBgColorSearch(result, i) {
+    let typeBackground = result['types'][0]['type']['name'];
+    if (typeBackground == 'grass') {
+        document.getElementById(`pokeCard${i}`).classList.add('grass');
+    }
+
+    if (typeBackground == 'fire') {
+        document.getElementById(`pokeCard${i}`).classList.add('fire');
+    }
+
+    if (typeBackground == 'bug') {
+        document.getElementById(`pokeCard${i}`).classList.add('bug');
+    }
+
+    if (typeBackground == 'water') {
+        document.getElementById(`pokeCard${i}`).classList.add('water');
+    }
+
+    if (typeBackground == 'normal') {
+        document.getElementById(`pokeCard${i}`).classList.add('normal');
+    }
+
+    if (typeBackground == 'poison') {
+        document.getElementById(`pokeCard${i}`).classList.add('poison');
+    }
+
+    if (typeBackground == 'electric') {
+        document.getElementById(`pokeCard${i}`).classList.add('electric');
+    }
+
+    if (typeBackground == 'ground') {
+        document.getElementById(`pokeCard${i}`).classList.add('ground');
+    }
 }

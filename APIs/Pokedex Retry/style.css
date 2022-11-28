@@ -212,3 +212,34 @@ img {
     
 }
 
+.header {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search {
+    margin-left: 30px;
+    border-radius: 5px;
+}
+
+@media (max-width: 500px) {
+    #headline {
+        display: none;
+        
+    }
+
+    #search {
+        margin-left: 0;
+    }
+
+    .pokedex {
+        justify-content: center;
+        
+    }
+
+    .pokeCard {
+        margin-left: 0;
+    }
+}
