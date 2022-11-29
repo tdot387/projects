@@ -113,73 +113,14 @@ function closePokemon() {
 
 function checkBgColor(responseAsJson, i) {
     let typeBackground = responseAsJson['types'][0]['type']['name'];
-    if (typeBackground == 'grass') {
-        document.getElementById(`pokeCard${i}`).classList.add('grass');
-    }
-
-    if (typeBackground == 'fire') {
-        document.getElementById(`pokeCard${i}`).classList.add('fire');
-    }
-
-    if (typeBackground == 'bug') {
-        document.getElementById(`pokeCard${i}`).classList.add('bug');
-    }
-
-    if (typeBackground == 'water') {
-        document.getElementById(`pokeCard${i}`).classList.add('water');
-    }
-
-    if (typeBackground == 'normal') {
-        document.getElementById(`pokeCard${i}`).classList.add('normal');
-    }
-
-    if (typeBackground == 'poison') {
-        document.getElementById(`pokeCard${i}`).classList.add('poison');
-    }
-
-    if (typeBackground == 'electric') {
-        document.getElementById(`pokeCard${i}`).classList.add('electric');
-    }
-
-    if (typeBackground == 'ground') {
-        document.getElementById(`pokeCard${i}`).classList.add('ground');
-    }
+    document.getElementById(`pokeCard${i}`).classList.add(typeBackground);
 }
 
 function checkBgColorFs(displayPokemon, i) {
     let cardBackground = displayPokemon['types'][0]['type']['name'];
-    if (cardBackground == 'grass') {
-        document.getElementById(`topInfo${i}`).classList.add('grass');
-    }
-
-    if (cardBackground == 'fire') {
-        document.getElementById(`topInfo${i}`).classList.add('fire');
-    }
-
-    if (cardBackground == 'bug') {
-        document.getElementById(`topInfo${i}`).classList.add('bug');
-    }
-
-    if (cardBackground == 'water') {
-        document.getElementById(`topInfo${i}`).classList.add('water');
-    }
-
-    if (cardBackground == 'normal') {
-        document.getElementById(`topInfo${i}`).classList.add('normal');
-    }
-
-    if (cardBackground == 'poison') {
-        document.getElementById(`topInfo${i}`).classList.add('poison');
-    }
-
-    if (cardBackground == 'electric') {
-        document.getElementById(`topInfo${i}`).classList.add('electric');
-    }
-
-    if (cardBackground == 'ground') {
-        document.getElementById(`topInfo${i}`).classList.add('ground');
-    }
+    document.getElementById(`topInfo${i}`).classList.add(cardBackground);
 }
+
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -199,14 +140,14 @@ async function includeHTML() {
 function searchPokemon() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
-    
+
     document.getElementById('pokedex').innerHTML = '';
-    
+
 
     for (let i = 1; i < allPokemon.length; i++) {
         let searchResult = allPokemon[i]['name'];
-        
-        if (searchResult.toLowerCase().includes(search)){
+
+        if (searchResult.toLowerCase().includes(search)) {
             let result = allPokemon[i];
             pokedex.innerHTML += `
             <div class="pokeCard" id="pokeCard${i}" onclick="openPokemon(${i})">
@@ -219,41 +160,11 @@ function searchPokemon() {
             </div>`
             checkBgColorSearch(result, i)
         }
-       
+
     }
 }
 
 function checkBgColorSearch(result, i) {
     let typeBackground = result['types'][0]['type']['name'];
-    if (typeBackground == 'grass') {
-        document.getElementById(`pokeCard${i}`).classList.add('grass');
-    }
-
-    if (typeBackground == 'fire') {
-        document.getElementById(`pokeCard${i}`).classList.add('fire');
-    }
-
-    if (typeBackground == 'bug') {
-        document.getElementById(`pokeCard${i}`).classList.add('bug');
-    }
-
-    if (typeBackground == 'water') {
-        document.getElementById(`pokeCard${i}`).classList.add('water');
-    }
-
-    if (typeBackground == 'normal') {
-        document.getElementById(`pokeCard${i}`).classList.add('normal');
-    }
-
-    if (typeBackground == 'poison') {
-        document.getElementById(`pokeCard${i}`).classList.add('poison');
-    }
-
-    if (typeBackground == 'electric') {
-        document.getElementById(`pokeCard${i}`).classList.add('electric');
-    }
-
-    if (typeBackground == 'ground') {
-        document.getElementById(`pokeCard${i}`).classList.add('ground');
-    }
+    document.getElementById(`pokeCard${i}`).classList.add(typeBackground);
 }

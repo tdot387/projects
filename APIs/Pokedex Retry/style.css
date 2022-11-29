@@ -1,7 +1,7 @@
 body {
-    background-color: rgba(0,0,0,0.5);
-    font-family: 'Roboto';    
-    
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto';
+
 }
 
 .showFullscreen {
@@ -18,6 +18,12 @@ body {
 
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+
+}
+
 .currentPokemon {
     color: white;
 }
@@ -31,7 +37,7 @@ h2 {
 }
 
 h3 {
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 2px 6px 2px 6px;
     border-radius: 5px;
 }
@@ -52,17 +58,18 @@ img {
 .pokedex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 
 .pokeCard {
     width: 250px;
     height: 250px;
-    
+
     color: white;
     margin-top: 24px;
     margin-left: 24px;
-    border: 2px solid rgba(0,0,0,0.5);
+    border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     padding: 12px;
     display: flex;
@@ -107,12 +114,12 @@ img {
 
 .poison {
     background-color: #DEF472;
-    color: rgba(0,0,0,0.8);
-    
+    color: rgba(0, 0, 0, 0.8);
+
 }
 
 .poison h3 {
-    border: 1px solid rgba(0,0,0,0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .electric {
@@ -170,7 +177,7 @@ img {
 }
 
 .topInfo {
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -209,7 +216,7 @@ img {
     text-align: center;
     padding-left: 80px;
     padding-right: 80px;
-    
+
 }
 
 .header {
@@ -224,22 +231,45 @@ img {
     border-radius: 5px;
 }
 
-@media (max-width: 500px) {
+
+
+
+@media (max-width: 620px) {
     #headline {
         display: none;
-        
+
     }
 
     #search {
         margin-left: 0;
-    }
-
-    .pokedex {
         justify-content: center;
-        
     }
 
     .pokeCard {
-        margin-left: 0;
+        margin-left: 0px;
+        width: 80%;
+        height: auto;
+        
     }
+
+    #left {
+        height: 20px;
+        left: 100px;
+        bottom: 130px;
+    }
+
+    #right {
+        height: 20px;
+        right: 100px;
+        bottom: 130px;
+    }
+
+    #close-btn {
+        cursor: pointer;
+        position: fixed;
+        top: 36px;
+        left: 80px;
+    }
+    
+    
 }

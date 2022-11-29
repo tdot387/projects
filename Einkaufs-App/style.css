@@ -1,0 +1,23 @@
+body {
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.menuSuggestions {
+    
+}
+
+
+.menuBoxes {
+    
+}
+.menuBoxes img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
