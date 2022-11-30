@@ -19,12 +19,19 @@ function addRosenkohl() {
     for (let i = 0; i < shoppinglist.length; i++) {
         let list = shoppinglist[i];
         
+        for (let j = 0; j < list.length; j++){
+            let test = list[j];
 
-        let showShoppingList = document.getElementById('yourShoppingList');
+            let showShoppingList = document.getElementById('yourShoppingList');
         showShoppingList.innerHTML = `<div> 
         Das musst Du heute einkaufen:</div>`;
-        showShoppingList.innerHTML += `
-        <div>${list}</div>`
+        showShoppingList.innerHTML +=  /*html*/`
+        <div>${test}</div>`
+
+        }
+        
+
+        
 
     }
     renderDishBoxes();
