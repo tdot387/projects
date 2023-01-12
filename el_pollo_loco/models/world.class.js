@@ -5,6 +5,10 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    statusBar = new StatusBar();
+    statusBarCoins = new StatusBarCoins();
+    statusBarBottles = new StatusBarBottles();
+    throwableObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -12,22 +16,44 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
+        this.toggleFullscreen();
+    }
+
+    toggleFullscreen() {
+        setInterval(() => {
+            if (this.keyboard.Q) {
+                this.canvas.requestFullscreen();
+            }
+        }, 10);
+
     }
 
     setWorld() {
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if( this.character.isColliding(enemy) ) {
-                    this.character.hit();
-                    console.log('Collision with character, energy:', this.character.energy);
-                }
-            });
+            this.checkCollisions();
+            this.checkThrowObjects();
         }, 200);
+    }
+
+    checkThrowObjects() {
+        if (this.keyboard.D) {
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            this.throwableObjects.push(bottle);
+        }
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.energy)
+            }
+        });
     }
 
     draw() {
@@ -35,12 +61,26 @@ class World {
 
         this.ctx.translate(this.camera_x, 0);
 
-        this.addToMap(this.character);
 
         this.addObjectsToMap(this.level.backgroundObjects);
-        this.addToMap(this.character);
+
         this.addObjectsToMap(this.level.clouds);
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBar);
+        this.ctx.translate(this.camera_x, 0);
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBarCoins);
+        this.ctx.translate(this.camera_x, 0);
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBarBottles);
+        this.ctx.translate(this.camera_x, 0);
+
+        this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0);
 
@@ -65,14 +105,14 @@ class World {
 
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
+        /*mo.drawFrame(this.ctx);*/
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);
 
         }
     }
-    
+
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);

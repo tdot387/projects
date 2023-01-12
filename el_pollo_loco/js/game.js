@@ -1,13 +1,22 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let intervalIds = [];
 
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
-    console.log('My character is', world.character);
 }
+
+function setStoppableInterval(fn, time) {
+    let id = setInterval(fn, time);
+    intervalIds.push(id);
+}
+
+function stopGame() {
+    intervalIds.forEach(clearInterval);
+}
+
 
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == "38") {
@@ -28,6 +37,14 @@ window.addEventListener("keydown", (e) => {
 
     if (e.keyCode == "32") {
         keyboard.SPACE = true;
+    }
+
+    if (e.code == "KeyD") {
+        keyboard.D = true;
+    }
+
+    if (e.code == "KeyQ") {
+        keyboard.Q = true;
     }
 });
 
@@ -52,4 +69,11 @@ window.addEventListener("keyup", (e) => {
         keyboard.SPACE = false;
     }
 
+    if (e.code == "KeyD") {
+        keyboard.D = false;
+    }
+
+    if (e.code == "KeyQ") {
+        keyboard.Q = false;
+    }
 });
