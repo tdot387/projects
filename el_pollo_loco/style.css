@@ -24,7 +24,11 @@ canvas {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
+}
+
+.main-game {
+    position: relative;
 }
 
 #main-buttons {
@@ -32,7 +36,11 @@ canvas {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 3;
+    width: 100%;
+    padding-top: 25px;
 }
+
 
 button {
     background-color: #FF9600;
@@ -41,10 +49,90 @@ button {
     border-radius: 20px;
     padding: 5px 15px;
     font-size: 24px;
+    cursor: pointer;
 }
 
+.start-screen {
+    position: absolute;
+    max-width: 720px;
+    height: 480px;
+    width: 100%;
+    top: 0;
 
+}
 
+.start-screen img {
+    position: absolute;
+    max-width: 720px;
+    height: 480px;
+    width: 100%;
+    top: 0;
+}
+
+.story {
+    position: absolute;
+    max-width: 720px;
+    height: 480px;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.openStory {
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 20px;
+    word-break: break-word;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin: 73px;
+    letter-spacing: normal;
+    text-shadow: none;
+    background-color: #FF9600;
+    border: 1px solid black;
+    border-radius: 24px;
+}
+
+.controls {
+    position: absolute;
+    max-width: 720px;
+    height: 480px;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.openControls {
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 20px;
+    word-break: break-word;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin: 73px;
+    letter-spacing: normal;
+    text-shadow: none;
+    background-color: #FF9600;
+    border: 1px solid black;
+    border-radius: 24px;
+}
+
+.lights-out {
+    position: absolute;
+    max-width: 720px;
+    height: 480px;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
 
 .mobile-layer {
@@ -55,6 +143,31 @@ button {
     height: 100vh;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
+}
+
+.img-table {
+    padding-right: 100px;
+}
+
+.table-text {
+    text-align: left;
+}
+
+.ingameButtons {
+    display: flex;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.ingameBtn {
+    background-color: #FF9600;
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 0px 15px;
+    cursor: pointer;
+    margin-left: 12px;
 }
 
 @font-face {

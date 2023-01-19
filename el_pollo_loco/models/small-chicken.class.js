@@ -2,9 +2,8 @@ class SmallChicken extends MoveableObject {
 
     height = 50;
     width = 50;
-    y = 70;
-    speed = 50;
-    groundPos = 360;
+    speed = 10;
+    groundPos = 370;
     IMAGES_WALKING = [
         './img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         './img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -36,8 +35,11 @@ class SmallChicken extends MoveableObject {
     }
 
     chickenJump() {
+        
         setInterval(() => {
+            if(!this.isAboveGround) {
             this.jump();
+        }
         }, 1000);
     }
 }

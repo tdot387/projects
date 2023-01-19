@@ -1,5 +1,7 @@
 let level1;
 
+function initLevel() {
+
 level1 = new Level(
     [
         new Chicken(),
@@ -11,18 +13,14 @@ level1 = new Level(
         new SmallChicken(),
         new Endboss(),
     ],
-
-   /* [
-        new SalsaBottle(),
-        new SalsaBottle()
-    ],*/
     
     [
-        new Cloud(),
-        new Cloud(719),
-        new Cloud(719 * 2),
-        new Cloud(719 * 3),
-        new Cloud(719 * 4)
+        new Cloud(500),
+        new Cloud(1000),
+        new Cloud(1500),
+        new Cloud(2000),
+        new Cloud(2500),
+        new Cloud(3000)
 
     ],
     
@@ -61,6 +59,32 @@ level1 = new Level(
         new BackgroundObject("./img/5_background/layers/3_third_layer/2.png", 719 * 5),
         new BackgroundObject("./img/5_background/layers/2_second_layer/2.png", 719 * 5),
         new BackgroundObject("./img/5_background/layers/1_first_layer/2.png", 719 * 5),
+    ],
+    [
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle()
+    ],
+
+    [
+        new Coins(60),
+        new Coins(60),
+        new Coins(100),
+        new Coins(120),
+        new Coins(120),
+        new Coins(200),
+        new Coins(220),
+        new Coins(220),
+        new Coins(250),
+        new Coins(250)
+
     ]
 );
-
+}

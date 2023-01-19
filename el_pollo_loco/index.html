@@ -19,6 +19,7 @@
     <script src="./models/status-bar.class.js"></script>
     <script src="./models/status-bar-coins.class.js"></script>
     <script src="./models/status-bar-bottles.class.js"></script>
+    <script src="./models/coins.class.js"></script>
     <script src="./models/world.class.js"></script>
     <script src="./models/keyboard.class.js"></script>
     <script src="./models/throwable-object.class.js"></script>
@@ -29,20 +30,74 @@
 
 </head>
 
-<body onload="init()">
+<body>
     <div class="mobile-layer d-none">
         <p>Please rotate your phone</p>
     </div>
     <h1>El Pollo Loco</h1>
     <div id="main-game" class="main-game">
-        <div class="d-none">
-            <button>test1</button>
-            <button>tes2</button>
-            <button>test3</button>
+        <div id="main-buttons">
+            <div id="buttons">
+                <button onclick="startGame()">Start</button>
+                <button onclick="showControls()">Controls</button>
+                <button onclick="showStory()">Story</button>
+            </div>
+            <div id="ingameButtons" class="ingameButtons d-none">
+                <div class="ingameBtn" onclick="showControls()"><img src="img/controls.png"></div>
+                <div class="ingameBtn" id="background-sound"><img onclick="muteSound()" src="img/play_sound.png"></div>
+                <div class="ingameBtn" onclick="toggleFullscreen()"><img src="img/fullscreen.png"></div>
+            </div>
         </div>
         <canvas id="canvas" width="720" height="480">
 
         </canvas>
+        <div class="start-screen" id="start-screen">
+            <img src="./img/9_intro_outro_screens/start/startscreen_1.png">
+        </div>
+        <div id="lights-out" class="lights-out d-none">
+            <div class="story d-none" id="story">
+                <div class="openStory d-none" id="openStory">
+                    <div onclick="closeStory()" style="cursor: pointer"><span style="font-size: 24px">&#10005;</span>
+                    </div>
+                    <div>
+                        <p style="padding-right: 34px;">Mexico. The land of opportunity. Pepe Peligroso, a
+                            thirty-something hatbearing gunslinger, is off to kill some chickens. But something odd is
+                            going on behind the border. Rumor has it that there is a giant chicken waiting for him...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="lights-out2" class="lights-out d-none">
+            <div class="controls d-none" id="controls">
+                <div class="openControls d-none" id="openControls">
+                    <div onclick="closeControls()" style="cursor: pointer"><span style="font-size: 24px">&#10005;</span>
+                    </div>
+                    <div>
+                        <table  style="color: black">
+                            <tbody>
+                                <tr>
+                                    <th class="img-table"><img src="./img/left.png"></th>
+                                    <th class="table-text img-table">LEFT</th>
+                                </tr>
+                                <tr>
+                                    <th class="img-table"><img src="./img/right.png"></th>
+                                    <th class="table-text img-table">RIGHT</th>
+                                </tr>
+                                <tr>
+                                    <th class="img-table"><img src="./img/up.png"></th>
+                                    <th class="table-text img-table">JUMP</th>
+                                </tr>
+                                <tr>
+                                    <th class="img-table"><img src="./img/D.png"><span>,&nbsp;&nbsp;</span><img src="./img/throw.png"></th>
+                                    <th class="table-text img-table">THROW BOTTLE</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

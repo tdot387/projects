@@ -5,9 +5,9 @@ class SalsaBottle extends MoveableObject {
     y = 340;
 
     offset = {
-        top: 20,
-        bottom: 20,
-        left: 20,
+        top: 10,
+        bottom: 10,
+        left: 30,
         right: 20,
     };
 
@@ -19,7 +19,7 @@ class SalsaBottle extends MoveableObject {
     constructor() {
         super().loadImage('./img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
         this.loadImages(this.IMAGES_MOVING);
-        this.x = 500 + Math.random() * 1000; // Zahl zwischen 200 und 700
+        this.x = 500 + Math.random() * 3000; // Zahl zwischen 200 und 700
 
         this.animate();
     }
@@ -28,7 +28,9 @@ class SalsaBottle extends MoveableObject {
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_MOVING);
-        }, 200);
+        }, 1000);
     }
+
+
 
 }
