@@ -22,22 +22,29 @@ class Chicken extends MoveableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = 500 + Math.random() * 3000; // Zahl zwischen 200 und 700
         this.speed = 0.15 + Math.random() * 0.5;
-
         this.animate();
     }
 
 
     animate() {
-        setInterval(() => {
+        this.move = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
 
-        setInterval(() => {
+        this.walking = setInterval(() => {
             if (this.isDead()) {
                 this.loadImage(this.IMAGES_DEAD[0]);
+                this.deadChicken();
             } else {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 200);
     }
+
+    deadChicken() {
+        setTimeout(() =>{
+          clearInterval(this.move);
+          clearInterval(this.walking);    
+        },200);
+      }  
 }

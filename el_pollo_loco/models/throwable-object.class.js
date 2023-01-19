@@ -1,5 +1,6 @@
 class ThrowableObject extends MoveableObject {
 
+    speedX = 10;
 
     IMAGES = [
         './img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -37,6 +38,7 @@ class ThrowableObject extends MoveableObject {
         this.applyGravity();
         setInterval(() => {
             this.x += 10;
+            console.log(x);
         }, 25);
     }
 
