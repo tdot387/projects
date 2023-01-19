@@ -83,6 +83,7 @@ class World {
             }
         }
         );
+
     }
 
     checkBottleDirection(bottle) {

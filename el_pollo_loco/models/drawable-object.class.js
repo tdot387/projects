@@ -31,7 +31,7 @@ class DrawableObject {
 
     drawFrame(ctx) {
 
-        if (this instanceof Character) {
+        if (this instanceof Character || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

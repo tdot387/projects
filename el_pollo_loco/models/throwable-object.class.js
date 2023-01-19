@@ -42,11 +42,11 @@ class ThrowableObject extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if(this.isColliding) {
-            this.playAnimation(this.IMAGES);
-        } else {
-            this.playAnimation(this.IMAGES_SPLASH);
-        }
+            if (this.isColliding()) {
+                this.playAnimation(this.IMAGES_SPLASH);
+            } else {
+                this.playAnimation(this.IMAGES);
+            }
         }, 1000 / 60);
     }
 }
