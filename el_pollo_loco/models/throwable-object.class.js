@@ -44,7 +44,7 @@ class ThrowableObject extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (!this.isColliding(enemy) ) {
+            if () {
                 this.playAnimation(this.IMAGES);
             } else {
                 this.playAnimation(this.IMAGES_SPLASH);
