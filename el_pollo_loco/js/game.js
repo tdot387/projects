@@ -171,3 +171,9 @@ function setMobileBtn() {
         keyboard.D = false;
     });
 }
+
+function test() {
+    if (window.innerWidth < 720) {
+        document.getElementById('mobile-btns-bottom').classList.remove('d-none');
+    }
+}
