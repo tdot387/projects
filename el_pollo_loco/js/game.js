@@ -6,6 +6,7 @@ let intervalIds = [];
 function startGame() {
     initLevel();
     init();
+    setMobileBtn();
 }
 
 function init() {
@@ -124,3 +125,49 @@ window.addEventListener("keyup", (e) => {
         keyboard.Q = false;
     }
 });
+
+function setMobileBtn() {
+    document.getElementById("canvas").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+    });
+
+    document.getElementById("btnLeft").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keyboard.LEFT = true;
+    });
+
+    document.getElementById("btnLeft").addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keyboard.LEFT = false;
+    });
+
+    document.getElementById("btnRight").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = true;
+    });
+
+    document.getElementById("btnRight").addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = false;
+    });
+
+    document.getElementById("btnJump").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keyboard.UP = true;
+    });
+
+    document.getElementById("btnJump").addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keyboard.UP = false;
+    });
+
+    document.getElementById("btnThrow").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keyboard.D = true;
+    });
+
+    document.getElementById("btnThrow").addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keyboard.D = false;
+    });
+}

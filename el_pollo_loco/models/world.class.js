@@ -8,17 +8,20 @@ class World {
     statusBar = new StatusBar();
     statusBarCoins = new StatusBarCoins();
     statusBarBottles = new StatusBarBottles();
+    endboss = level1.enemies[7];
 
     throwableObjects = [];
     bottleAmount = 0;
     coinAmount = 0;
-    
+
     coin_sound = new Audio('audio/collect_coin.mp3');
     bottle_sound = new Audio('audio/collect_bottle.mp3');
     bg_music = new Audio('audio/bg-music.mp3');
     dead_chicken = new Audio('audio/dead_chicken.mp3');
+    endboss_hit = new Audio('audio/ouch.mp3');
 
     killedChicken = 0;
+    killedSmallChicken = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -39,12 +42,13 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
+            this.checkCollisionsBottleWithEndboss();
         }, 200);
 
         setStoppableInterval(() => {
             this.checkCollisionsChickenFromTopChicken();
-        }, 1000/60);
-
+            this.checkCollisionSmallChicken();
+        }, 1000 / 60);
 
     }
 
@@ -65,7 +69,16 @@ class World {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy)
             }
+            if (this.character.isColliding(enemy) && enemy instanceof Endboss) {
+                this.character.hitByEndboss();
+            }
         });
+
+        this.level.enemies.forEach((boss) => {
+
+        });
+
+
 
         this.level.bottles.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
@@ -93,30 +106,61 @@ class World {
 
     checkCollisionsChickenFromTopChicken() {
         this.level.enemies.forEach((enemy) => {
-          if (this.isCollidingFromAbove(enemy) && enemy instanceof Chicken) {
-            enemy.hit();
-            enemy.dead = true;    
-            this.dead_chicken.play();
-            this.killedChicken++;
-            console.log('hallo');
-          }
+            if (this.isCollidingFromAbove(enemy) && enemy instanceof Chicken) {
+                enemy.hit();
+                enemy.dead = true;
+                this.dead_chicken.play();
+                this.killedChicken++;
+            }
         });
-      }
+    }
 
-      isCollidingFromAbove(mo){
+    checkCollisionSmallChicken() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.isCollidingFromAbove(enemy) && enemy instanceof SmallChicken) {
+                enemy.hit();
+                enemy.dead = true;
+                this.dead_chicken.play();
+                this.killedSmallChicken++;
+            }
+        })
+    }
+
+    isCollidingFromAbove(mo) {
         return this.character.isColliding(mo) &&
-        this.character.isAboveGround() &&
-        !mo.dead &&
-    
-        !this.character.isHurt()
-      }
+            this.character.isAboveGround() &&
+            !mo.dead &&
 
-      checkBottleDirection(bottle) {
+            !this.character.isHurt()
+    }
+
+    checkBottleDirection(bottle) {
         if (this.character.otherDirection) {
-          bottle.x *= -10;
-          bottle.x = this.character.x;
+            bottle.x *= -1;
+            bottle.x = this.character.x;
+            setInterval(() => {
+                bottle.x -= 20;
+            }, 25);
         }
-      }
+    }
+
+    checkCollisionsBottleWithEndboss() {
+        this.throwableObjects.forEach((throwableObjects) => {
+            if (this.isCollidingEndboss(throwableObjects)) {
+                
+                this.endboss.hit();
+                this.endboss_hit.play();
+
+            }
+        });
+    }
+
+    isCollidingEndboss(throwableObjects) {
+        return this.endboss.isColliding(throwableObjects) &&
+            throwableObjects.heigth != 0 &&
+            throwableObjects.width != 0
+    }
+
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

@@ -170,6 +170,35 @@ button {
     margin-left: 12px;
 }
 
+.mobileBtns {
+    height: 40px;
+    width: 40px;
+    background-color: #FF9600;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 12px;
+    margin-right: 6px;
+    padding: 2px;
+}
+
+.ingame-btns-bottom {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: space-between;
+    width: 97%;
+    margin-left: 12px;
+    margin-bottom: 6px;
+}
+
+.mobile-btns-left {
+    display: flex;
+}
+
+.mobile-btns-right {
+    display: flex;
+}
+
 @font-face {
     font-family: 'zabars';
     src: URL('./fonts/zabars.ttf') format('truetype');
@@ -179,6 +208,7 @@ button {
     canvas {
         width: 100%;
     }
+
 }
 
 @media only screen and (max-height: 480px) {

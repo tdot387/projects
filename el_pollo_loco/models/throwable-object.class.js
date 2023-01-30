@@ -38,16 +38,17 @@ class ThrowableObject extends MoveableObject {
         this.applyGravity();
         setInterval(() => {
             this.x += 10;
-            console.log(x);
         }, 25);
+
     }
 
     animate() {
         setInterval(() => {
-            if (this.isColliding()) {
-                this.playAnimation(this.IMAGES_SPLASH);
-            } else {
+            if (!this.isColliding(enemy) ) {
                 this.playAnimation(this.IMAGES);
+            } else {
+                this.playAnimation(this.IMAGES_SPLASH);
+
             }
         }, 1000 / 60);
     }
