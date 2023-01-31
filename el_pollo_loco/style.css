@@ -54,8 +54,7 @@ button {
 
 .start-screen {
     position: absolute;
-    max-width: 720px;
-    height: 480px;
+    height: 100%;
     width: 100%;
     top: 0;
 
@@ -64,9 +63,50 @@ button {
 .start-screen img {
     position: absolute;
     max-width: 720px;
-    height: 480px;
     width: 100%;
     top: 0;
+    height: 100%;
+}
+
+.end-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.end-screen img {
+    position: absolute;
+    max-width: 720px;
+    width: 100%;
+    top: 0;
+    height: 100%;
+}
+
+#stats {
+    position: absolute;
+    max-width: 720px;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 8;
+    color: white;
+    text-align: center;
+    line-height: 22px;
+}
+
+#retard {
+    z-index: 15;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .story {
@@ -209,6 +249,13 @@ button {
         width: 100%;
     }
 
+    .mobile-layer {
+        display: flex !important;
+        z-index: 5;
+        align-items: center;
+        justify-content: center;
+    }
+
 }
 
 @media only screen and (max-height: 480px) {
@@ -220,3 +267,5 @@ button {
         display: none;
     }
 }
+
+@media only screen and (max-width: 420px) {}

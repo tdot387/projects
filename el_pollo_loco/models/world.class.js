@@ -23,6 +23,8 @@ class World {
     killedChicken = 0;
     killedSmallChicken = 0;
 
+    collidesWithEndboss = false;
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -30,7 +32,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        /*this.bg_music.play();*/
+        this.bg_music.play();
     }
 
 
@@ -74,18 +76,12 @@ class World {
             }
         });
 
-        this.level.enemies.forEach((boss) => {
-
-        });
-
-
-
         this.level.bottles.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
                 this.bottle_sound.play();
                 this.bottleAmount++;
                 this.hideStuff(bottle);
-                this.statusBarBottles.setPercentage(this.bottleAmount)
+                this.statusBarBottles.setPercentage(this.bottleAmount);
 
             }
         }
@@ -96,7 +92,7 @@ class World {
                 this.coin_sound.play();
                 this.coinAmount++;
                 this.hideStuff(coin);
-                this.statusBarCoins.setPercentage(this.coinAmount)
+                this.statusBarCoins.setPercentage(this.coinAmount);
 
             }
         }
@@ -147,10 +143,9 @@ class World {
     checkCollisionsBottleWithEndboss() {
         this.throwableObjects.forEach((throwableObjects) => {
             if (this.isCollidingEndboss(throwableObjects)) {
-                
                 this.endboss.hit();
                 this.endboss_hit.play();
-
+                this.collidesWithEndboss = true;
             }
         });
     }

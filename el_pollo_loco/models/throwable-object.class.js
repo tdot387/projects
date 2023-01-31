@@ -1,6 +1,8 @@
 class ThrowableObject extends MoveableObject {
 
     speedX = 10;
+    splash_sound = new Audio('audio/splash_bottle.mp3');
+    
 
     IMAGES = [
         './img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -36,22 +38,24 @@ class ThrowableObject extends MoveableObject {
         this.y = y;
         this.speedY = 30;
         this.applyGravity();
-       /* setInterval(() => {
-            
-        }, 25);*/
 
     }
 
     animate() {
-        setInterval(() => {
-            if(this.y > 350) {
+        this.splash = setInterval(() => {
+            if (this.y > 350 || world.collidesWithEndboss) {
                 this.playAnimation(this.IMAGES_SPLASH);
                 this.speedX = 0;
+                this.splash_sound.play();
+                clearInterval(this.splash);
             } else {
                 this.playAnimation(this.IMAGES);
                 this.x += 5;
-
             }
         }, 1000 / 60);
+
+        setInterval(() => {
+            world.collidesWithEndboss = false;
+        }, 500);
     }
 }

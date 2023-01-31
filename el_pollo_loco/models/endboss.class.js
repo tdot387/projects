@@ -6,6 +6,8 @@ class Endboss extends MoveableObject {
     hadFirstContact = false;
     energy = 60;
 
+    end_sound = new Audio('audio/win_sound.mp3');
+
     offset = {
         top: 80,
         bottom: 20,
@@ -77,10 +79,11 @@ class Endboss extends MoveableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = 3900;
         this.animate();
+        /*this.test();*/
     }
 
     animate() {
-        setInterval(() => {
+        this.endboss_dead = setInterval(() => {
 
             if (!this.hadFirstContact) {
                 this.playAnimation(this.IMAGES_SPAWNING);
@@ -88,16 +91,40 @@ class Endboss extends MoveableObject {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                this.y += 25;
+                this.y += 35;
+                this.end_sound.play();
+                
             } else {
                 this.playAnimation(this.IMAGES_WALKING);
                 this.x -= 20;
             }
 
-            if (world.character.x > 3550) {
+            if(this.y > 440) {
+                this.deadEndboss();
+                document.getElementById('endScreen').classList.remove('d-none');
+                document.getElementById('stats').innerHTML = `<p>Endboss killed</p>
+                <p>Chicken killed: ${world.killedChicken}</p>
+                <p>Small Chicken killed: ${world.killedSmallChicken}</p>
+                <p>Collected coins: ${world.coinAmount}</p>
+                <p><span class="ingameBtn" onclick="reload()">Restart</span></p>`;
+                world.bg_music.pause();
+                stopGame();
+            }
+
+            if (world.character.x > 3550 || this.energy < 60) {
                 this.hadFirstContact = true;
             }
 
         }, 150);
+
     }
+
+    deadEndboss() {
+        setTimeout(() =>{
+          clearInterval(this.endboss_dead);
+        },200);
+      }  
+
+      
+
 }

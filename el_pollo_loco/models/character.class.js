@@ -151,6 +151,7 @@ class Character extends MoveableObject {
             this.dead_sound.play();
             this.characterFalling();
             stopGame();
+            this.showDeadScreen();
         } else if (this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
         } else if (this.isAboveGround()) {
@@ -160,22 +161,28 @@ class Character extends MoveableObject {
             this.playAnimation(this.IMAGES_WALKING);
             this.time = 0;
             this.snore_sound.pause();
-        } else if (this.time < 55) {
+        } else if (this.time < 95) {
             this.playAnimation(this.IMAGES_IDLE);
             this.time++;
             this.snore_sound.pause();
         } else {
             this.playAnimation(this.IMAGES_LONG_IDLE);
             this.snore_sound.play();
+
         }
     }
 
 
 
     characterFalling() {
-        setInterval(() => {
+        setInterval(() => { 
             this.y++;
         }, 10);
+    }
+
+    showDeadScreen() {
+        document.getElementById('deadScreen').classList.remove('d-none');
+        this.world.bg_music.pause();
     }
 
 }
