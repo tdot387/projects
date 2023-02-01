@@ -13,6 +13,8 @@ class World {
     throwableObjects = [];
     bottleAmount = 0;
     coinAmount = 0;
+    throwable = true;
+    throwTime = 0;
 
     coin_sound = new Audio('audio/collect_coin.mp3');
     bottle_sound = new Audio('audio/collect_bottle.mp3');
@@ -55,12 +57,21 @@ class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D && this.bottleAmount > 0) {
+        if (this.keyboard.D && this.bottleAmount > 0 && this.throwable) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
             this.bottleAmount--;
             this.statusBarBottles.setPercentage(this.bottleAmount);
             this.checkBottleDirection(bottle);
+            this.throwable = false;
+            setInterval(() => {
+                this.throwTime++;
+                if(this.throwTime > 25) {
+                    this.throwable = true;
+                    this.throwTime = 0;
+                }
+            }, 100);
+            
         }
     }
 

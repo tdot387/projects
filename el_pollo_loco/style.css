@@ -21,6 +21,7 @@ h1 {
 canvas {
     background-color: black;
     display: block;
+
 }
 
 .d-none {
@@ -99,6 +100,7 @@ button {
     color: white;
     text-align: center;
     line-height: 22px;
+    font-size: 40px;
 }
 
 #retard {
@@ -112,12 +114,12 @@ button {
 .story {
     position: absolute;
     max-width: 720px;
-    height: 480px;
     width: 100%;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 7;
 }
 
 .openStory {
@@ -129,7 +131,7 @@ button {
     word-break: break-word;
     font-size: 18px;
     box-sizing: border-box;
-    margin: 73px;
+    margin: 63px;
     letter-spacing: normal;
     text-shadow: none;
     background-color: #FF9600;
@@ -140,12 +142,12 @@ button {
 .controls {
     position: absolute;
     max-width: 720px;
-    height: 480px;
     width: 100%;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 7;
 }
 
 .openControls {
@@ -157,7 +159,7 @@ button {
     word-break: break-word;
     font-size: 18px;
     box-sizing: border-box;
-    margin: 73px;
+    margin: 60px;
     letter-spacing: normal;
     text-shadow: none;
     background-color: #FF9600;
@@ -167,8 +169,7 @@ button {
 
 .lights-out {
     position: absolute;
-    max-width: 720px;
-    height: 480px;
+    height: 100%;
     width: 100%;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
@@ -210,6 +211,10 @@ button {
     margin-left: 12px;
 }
 
+.ingameBtn img {
+    height: 30px;
+}
+
 .mobileBtns {
     height: 40px;
     width: 40px;
@@ -243,6 +248,7 @@ button {
     font-family: 'zabars';
     src: URL('./fonts/zabars.ttf') format('truetype');
 }
+
 
 @media only screen and (max-width: 720px) {
     canvas {

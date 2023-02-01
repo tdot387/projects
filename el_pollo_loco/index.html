@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta id="metaset" name="viewport" content="width=device-width, initial-scale=1.0; maximum-scale=1; user-scalable=yes;">
+    <title>El Pollo Loco</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script src="./models/drawable-object.class.js"></script>
@@ -43,9 +43,9 @@
                 <button onclick="showStory()">Story</button>
             </div>
             <div id="ingameButtons" class="ingameButtons d-none">
-                <div class="ingameBtn" onclick="showControls()"><img src="img/controls.png"></div>
+                <div class="ingameBtn" onclick="showControls()"><img src="img/joystick.png"></div>
                 <div class="ingameBtn" id="background-sound"><img onclick="muteSound()" src="img/play_sound.png"></div>
-                <div class="ingameBtn" onclick="fullscreen()"><img src="img/fullscreen.png"></div>
+                <div class="ingameBtn" id="fullscreenBtn" onclick="fullscreen()"><img src="img/fullscreen.png"></div>
             </div>
         </div>
         <canvas id="canvas" width="720" height="480">

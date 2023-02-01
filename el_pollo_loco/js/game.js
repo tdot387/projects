@@ -48,7 +48,7 @@ function showControls() {
 
 function reload() {
     window.location.reload();
-  }
+}
 
 function closeControls() {
     document.getElementById('controls').classList.add('d-none');
@@ -174,13 +174,28 @@ function setMobileBtn() {
 }
 
 function showMobBtns() {
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < 950) {
         document.getElementById('mobile-btns-bottom').classList.remove('d-none');
+        document.getElementById('fullscreenBtn').classList.add('d-none');
+    }
+}
+
+function removeMobBtns() {
+    if (window.innerWidth > 950) {
+        document.getElementById('mobile-btns-bottom').classList.add('d-none');
+        document.getElementById('fullscreenBtn').classList.remove('d-none');
     }
 }
 
 window.addEventListener("resize", function () {
     showMobBtns();
+    removeMobBtns();
+    removeFullscreenBtn();
+});
+
+window.addEventListener("load", function () {
+    showMobBtns();
+    removeMobBtns();
 });
 
 
@@ -206,42 +221,43 @@ function exitFullscreen(element) {
 
 function fullscreen() {
     let isInFullScreen =
-      (document.fullscreenElement && document.fullscreenElement !== null) ||
-      (document.webkitFullscreenElement &&
-        document.webkitFullscreenElement !== null) ||
-      (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-      (document.msFullscreenElement && document.msFullscreenElement !== null);
-  
+        (document.fullscreenElement && document.fullscreenElement !== null) ||
+        (document.webkitFullscreenElement &&
+            document.webkitFullscreenElement !== null) ||
+        (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+        (document.msFullscreenElement && document.msFullscreenElement !== null);
+
     let docElm = document.getElementById("showFullscreen");
     if (!isInFullScreen) {
-      openFullscreen(docElm);
+        openFullscreen(docElm);
     } else {
-      closeFullscreen();
+        closeFullscreen();
     }
-  }
+}
 
 
-  function closeFullscreen() {
+function closeFullscreen() {
     if (document.exitFullscreen) {
-      document.exitFullscreen();
+        document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
+        document.webkitExitFullscreen();
     } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
+        document.mozCancelFullScreen();
     } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
+        document.msExitFullscreen();
     }
-  }
+}
 
 
-  function openFullscreen(docElm) {;
+function openFullscreen(docElm) {
+    ;
     if (docElm.requestFullscreen) {
-      docElm.requestFullscreen();
+        docElm.requestFullscreen();
     } else if (docElm.mozRequestFullScreen) {
-      docElm.mozRequestFullScreen();
+        docElm.mozRequestFullScreen();
     } else if (docElm.webkitRequestFullScreen) {
-      docElm.webkitRequestFullScreen();
+        docElm.webkitRequestFullScreen();
     } else if (docElm.msRequestFullscreen) {
-      docElm.msRequestFullscreen();
+        docElm.msRequestFullscreen();
     }
-  }
+}
