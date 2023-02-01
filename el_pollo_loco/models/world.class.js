@@ -21,6 +21,7 @@ class World {
     bg_music = new Audio('audio/bg-music.mp3');
     dead_chicken = new Audio('audio/dead_chicken.mp3');
     endboss_hit = new Audio('audio/ouch.mp3');
+    splash_sound = new Audio('audio/splash_bottle.mp3');
 
     killedChicken = 0;
     killedSmallChicken = 0;
@@ -136,8 +137,8 @@ class World {
     isCollidingFromAbove(mo) {
         return this.character.isColliding(mo) &&
             this.character.isAboveGround() &&
+            !this.keyboard.UP &&
             !mo.dead &&
-
             !this.character.isHurt()
     }
 

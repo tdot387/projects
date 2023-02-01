@@ -1,7 +1,7 @@
 class ThrowableObject extends MoveableObject {
 
     speedX = 10;
-    splash_sound = new Audio('audio/splash_bottle.mp3');
+    
     
 
     IMAGES = [
@@ -46,7 +46,7 @@ class ThrowableObject extends MoveableObject {
             if (this.y > 350 || world.collidesWithEndboss) {
                 this.playAnimation(this.IMAGES_SPLASH);
                 this.speedX = 0;
-                this.splash_sound.play();
+                world.splash_sound.play();
                 clearInterval(this.splash);
             } else {
                 this.playAnimation(this.IMAGES);

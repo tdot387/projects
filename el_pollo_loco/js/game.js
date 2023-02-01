@@ -58,11 +58,31 @@ function closeControls() {
 
 function muteSound() {
     world.bg_music.pause();
+    world.character.snore_sound.volume = 0;
+    world.character.walking_sound.volume = 0;
+    world.character.dead_sound.volume = 0;
+    world.coin_sound.volume = 0;
+    world.bottle_sound.volume = 0;
+    world.dead_chicken.volume = 0;
+    world.endboss_hit.volume = 0;
+    world.endboss.end_sound.volume = 0;
+    world.bottle_sound.volume = 0;
+    world.splash_sound.volume = 0;
     document.getElementById('background-sound').innerHTML = `<img onclick="playSound()" src="img/no_sound.png">`;
 }
 
 function playSound() {
     world.bg_music.play();
+    world.character.snore_sound.volume = 1;
+    world.character.walking_sound.volume = 1;
+    world.character.dead_sound.volume = 1;
+    world.coin_sound.volume = 1;
+    world.bottle_sound.volume = 1;
+    world.dead_chicken.volume = 1;
+    world.endboss_hit.volume = 1;
+    world.endboss.end_sound.volume = 1;
+    world.bottle_sound.volume = 1;
+    world.splash_sound.volume = 1;
     document.getElementById('background-sound').innerHTML = `<img onclick="muteSound()" src="img/play_sound.png">`;
 }
 
@@ -190,7 +210,6 @@ function removeMobBtns() {
 window.addEventListener("resize", function () {
     showMobBtns();
     removeMobBtns();
-    removeFullscreenBtn();
 });
 
 window.addEventListener("load", function () {
